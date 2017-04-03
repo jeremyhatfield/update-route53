@@ -114,4 +114,4 @@ fi
 # All Done - cache the IP address for next time
 echo "$IP" > "$IPFILE"
 
-echo Done.
+echo Route53 update finished

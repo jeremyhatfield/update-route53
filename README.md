@@ -3,6 +3,11 @@ update-route53
 Script to update AWS Route 53 record set upon EC2 instance startup.
 
 ### 1. Create AWS IAM Role.
+Your EC2 instance will need permissions to update a Route53 recordset. To avoid storing keys on the EC2 instance, you will setup a new role in IAM. (We'll use  the console to create the role.)
+
+  1. Within IAM's navigation pane, click on 'Roles.'
+  2. Click the 'Create New Role' button.
+    ![Create New Role Button](/../readme-images/images/1-create-new-role.png?raw=true "Create New Role")
 
 
 ### 2. Install PIP and AWS-CLI

@@ -16,14 +16,14 @@ So, to get around this limitation, with the help of some other articles, I creat
 &nbsp;&nbsp;[Add to Runlevels](#5-add-to-runlevels)  
 
 
+
 ## 1. Pre-requisites
 
 ###  Create AWS IAM Role.
 Your EC2 instance will need permissions to update a Route53 recordset. To avoid storing keys on the EC2 instance, you will setup a new role in IAM and attach it to your EC2 at launch. (We'll use  the console to create the role.)
 
   * Within IAM's navigation pane, click on 'Roles.'
-  * Click the 'Create New Role' button.
-  
+  * Click the 'Create New Role' button.  
 ![Create New Role Button](/../readme-images/images/1-create-new-role.png?raw=true "Create New Role")
 
   * Name your new role. I use `route53-editor`. Click Next Step.

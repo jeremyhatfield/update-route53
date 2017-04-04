@@ -60,11 +60,11 @@ ln -s /home/bitnami/.local/bin/aws /usr/bin/aws
 
 ## 2. Create the Script
 Create your script, `update-route53.sh`, in the `/etc/init.d` directory.
-<br />
+<br /><br />
 
 ## 3. Update Script AWS Variables
 Update the `ZONEID` and `RECORDSET` variables in the script to reflect the Zone and Route53 record you want to change.
-<br />
+<br /><br />
 
 ## 4. Set Script Permissions
 Give the script execute permissions.

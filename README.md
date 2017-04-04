@@ -2,7 +2,7 @@ update-route53
 ======
 Script to update AWS Route 53 record set upon EC2 instance startup.
 
-When restarting an EC2 instance, the public IP address changes causing any Route53 recordsets to become instantly outdated. An easy fix is using Elastic IPs, however [you can only have 5 per region](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-limit) and need a really good excuse when asking Amazon to increase it.
+The public IP address given to an EC2 instance changes after an instance stops and starts again. This causes any Route53 recordsets to become instantly outdated. An easy fix is to use (VPC) Elastic IPs, which stick with the EC2 after a restart; however, [you can only have 5 per region](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-limit) and need a good excuse when asking Amazon to increase it.
 
 So, to get around this limitation, with the help of some other articles, I created a procedure that allows each EC2 instance to update their IP address to its corresponding Route53 recordset.
  
@@ -14,7 +14,7 @@ So, to get around this limitation, with the help of some other articles, I creat
 &nbsp;&nbsp;[Update Script Variables](#3-update-script-aws-variables)  
 &nbsp;&nbsp;[Set Script Permissions](#4-set-script-permissions)  
 &nbsp;&nbsp;[Add to Runlevels](#5-add-to-runlevels)  
-
+&nbsp;&nbsp;[References](#references)
 
 
 ## 1. Pre-requisites
@@ -78,7 +78,23 @@ Add the script to the default runlevels so it will be called at runtime.
 ```bash
 sudo update-rc.d update-route53.sh defaults
 ```
->Note: To remove the script from runlevels...
->```sudo update-rc.d /etc/init.d/update-route53.sh remove```
+>Note: To remove the script from runlevels...`sudo update-rc.d /etc/init.d/update-route53.sh remove`
+<br />
 
+### References
+Creating the script:  
+  - http://www.spidersoft.com.au/2016/how-schedule-start-and-stop-ec2-instance-on-aws/  
 
+Running script at startup:  
+  - http://xmodulo.com/how-to-automatically-start-program-on-boot-in-debian.html  
+  - https://www.cyberciti.biz/tips/linux-how-to-run-a-command-when-boots-up.html  
+  - http://askubuntu.com/questions/409025/permission-denied-when-running-sh-scripts  
+
+AWS Command Line Interface Installation:
+  - http://docs.aws.amazon.com/cli/latest/userguide/aws-cli.pdf  
+  - http://docs.aws.amazon.com/cli/latest/userguide/awscli-install-linux.html  
+
+AWS IAM Policies:  
+  - http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html  
+  
+  

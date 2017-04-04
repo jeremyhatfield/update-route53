@@ -32,6 +32,6 @@ Add the script to the default runlevels so it will be called at runtime.
 sudo update-rc.d update-route53.sh defaults
 ```
 >Note: To remove the script from runlevels...
->```bash sudo update-rc.d /etc/init.d/update-route53.sh remove```
+>```sudo update-rc.d /etc/init.d/update-route53.sh remove```
 
 

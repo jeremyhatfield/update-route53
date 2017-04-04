@@ -57,18 +57,22 @@ Add a symlink for the AWS-CLI to the `/usr/bin` directory. The home directory is
 ln -s /home/bitnami/.local/bin/aws /usr/bin/aws
 ```
 
+<br />
 ## 2. Create the Script
 Create your script, `update-route53.sh`, in the `/etc/init.d` directory.
 
+<br />
 ## 3. Update Script AWS Variables
 Update the `ZONEID` and `RECORDSET` variables in the script to reflect the Zone and Route53 record you want to change.
 
+<br />
 ## 4. Set Script Permissions
 Give the script execute permissions.
 ```bash
 sudo chmod +x /etc/init.d/update-route53.sh
 ```
 
+<br />
 ## 5. Add to Runlevels
 Add the script to the default runlevels so it will be called at runtime.
 ```bash

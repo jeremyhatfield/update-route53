@@ -2,7 +2,23 @@ update-route53
 ======
 Script to update AWS Route 53 record set upon EC2 instance startup.
 
-### 1. Create AWS IAM Role.
+When restarting an EC2 instance, the public IP address changes causing any Route53 recordsets to become instantly outdated. An easy fix is using Elastic IPs, however [you can only have 5 per region](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-limit) and need a really good excuse when asking Amazon to increase it.
+
+So, to get around this limitation, with the help of some other articles, I created a procedure that allows each EC2 instance to update their IP address to its corresponding Route53 recordset.
+
+### Table of Contents
+[Pre-requisites](#pre-requisites)
+[IAM Role](#create-aws-iam-role)
+[AWS CLI](#install-the-aws-command-line-interface)
+[Create the Script](#create-the-script)
+[Update Script Variables](#update-script-aws-variables)
+[Set Script Permissions](#set-script-permissions)
+[Add to Runlevels](#add-to-runlevels)
+
+
+### 1. Pre-requisites
+
+####  Create AWS IAM Role.
 Your EC2 instance will need permissions to update a Route53 recordset. To avoid storing keys on the EC2 instance, you will setup a new role in IAM and attach it to your EC2 at launch. (We'll use  the console to create the role.)
 
   * Within IAM's navigation pane, click on 'Roles.'

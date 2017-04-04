@@ -7,7 +7,7 @@ Your EC2 instance will need permissions to update a Route53 recordset. To avoid 
 
   1. Within IAM's navigation pane, click on 'Roles.'
   2. Click the 'Create New Role' button.
-    ![Create New Role Button](/../readme-images/images/1-create-new-role.png?raw=true "Create New Role")
+![Create New Role Button](/../readme-images/images/1-create-new-role.png?raw=true "Create New Role")
 
 
 ### 2. Install PIP and AWS-CLI

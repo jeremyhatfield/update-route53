@@ -5,26 +5,20 @@ Script to update AWS Route 53 record set upon EC2 instance startup.
 When restarting an EC2 instance, the public IP address changes causing any Route53 recordsets to become instantly outdated. An easy fix is using Elastic IPs, however [you can only have 5 per region](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-limit) and need a really good excuse when asking Amazon to increase it.
 
 So, to get around this limitation, with the help of some other articles, I created a procedure that allows each EC2 instance to update their IP address to its corresponding Route53 recordset.
-
-## Table of Contents
-1. [Pre-requisites](#1-pre-requisites)
-  1.1. [IAM Role](#create-aws-iam-role)
-  1.2. [AWS CLI](#install-the-aws-iam-role)
-2. [Create the Script](#2-create-the-script)
-
-## Table of Contents
-1. [Pre-requisites](#1-pre-requisites)
-  1.[IAM Role](#create-aws-iam-role)
-  2. [AWS CLI](#install-the-aws-command-line-interface)
-2. [Create the Script](#2-create-the-script)
-3. [Update Script Variables](#3-update-script-aws-variables)
-4. [Set Script Permissions](#4-set-script-permissions)
-5. [Add to Runlevels](#5-add-to-runlevels)
+ 
+### Table of Contents
+&nbsp;&nbsp;[Pre-requisites](#1-pre-requisites)  
+&nbsp;&nbsp;&nbsp;&nbsp;[IAM Role](#create-aws-iam-role)  
+&nbsp;&nbsp;&nbsp;&nbsp;[AWS CLI](#install-the-aws-command-line-interface)  
+&nbsp;&nbsp;[Create the Script](#2-create-the-script)  
+&nbsp;&nbsp;[Update Script Variables](#3-update-script-aws-variables)  
+&nbsp;&nbsp;[Set Script Permissions](#4-set-script-permissions)  
+&nbsp;&nbsp;[Add to Runlevels](#5-add-to-runlevels)  
 
 
-### 1. Pre-requisites
+## 1. Pre-requisites
 
-####  Create AWS IAM Role.
+###  Create AWS IAM Role.
 Your EC2 instance will need permissions to update a Route53 recordset. To avoid storing keys on the EC2 instance, you will setup a new role in IAM and attach it to your EC2 at launch. (We'll use  the console to create the role.)
 
   * Within IAM's navigation pane, click on 'Roles.'
@@ -49,31 +43,31 @@ Your EC2 instance will need permissions to update a Route53 recordset. To avoid 
   * Use this new role when launching your EC2 instances. 
   >Note: If you have an existing role that you need to use, just attach the Route53 policy to your existing role.
 
-#### Install the AWS Command Line Interface (AWS-CLI)
+### Install the AWS Command Line Interface (AWS-CLI)
 Install the AWS CLI using [pip](http://docs.aws.amazon.com/cli/latest/userguide/awscli-install-linux.html) or use the [bundled installer](http://docs.aws.amazon.com/cli/latest/userguide/awscli-install-bundle.html).
 
 >Note: I used an AMI from the marketplace and experienced several conflicts when installing `pip`. The bundled installer was much easier in this case.
 
 
-#### Create SymLink
-Add a symlink for the AWS-CLI to the `/usr/bin` directory.
+### Create SymLink
+Add a symlink for the AWS-CLI to the `/usr/bin` directory. The home directory is not always available at startup.
 ```bash
 ln -s /home/bitnami/.local/bin/aws /usr/bin/aws
 ```
 
-### 2. Create the Script
+## 2. Create the Script
 Create your script, `update-route53.sh`, in the `/etc/init.d` directory.
 
-### 3. Update Script AWS Variables
+## 3. Update Script AWS Variables
 Update the `ZONEID` and `RECORDSET` variables in the script to reflect the Zone and Route53 record you want to change.
 
-### 4. Set Script Permissions
+## 4. Set Script Permissions
 Give the script execute permissions.
 ```bash
 sudo chmod +x /etc/init.d/update-route53.sh
 ```
 
-### 5. Add to Runlevels
+## 5. Add to Runlevels
 Add the script to the default runlevels so it will be called at runtime.
 ```bash
 sudo update-rc.d update-route53.sh defaults

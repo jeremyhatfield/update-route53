@@ -10,7 +10,7 @@ So, to get around this limitation, with the help of some other articles, I creat
 &nbsp;&nbsp;[Pre-requisites](#1-pre-requisites)  
 &nbsp;&nbsp;&nbsp;&nbsp;[IAM Role](#create-aws-iam-role)  
 &nbsp;&nbsp;&nbsp;&nbsp;[AWS CLI](#install-the-aws-command-line-interface-aws-cli)  
-&nbsp;&nbsp;[Create the Script](#2-create-the-script)  
+&nbsp;&nbsp;[Download the Script](#2-download-the-script)  
 &nbsp;&nbsp;[Update Script Variables](#3-update-script-aws-variables)  
 &nbsp;&nbsp;[Set Script Permissions](#4-set-script-permissions)  
 &nbsp;&nbsp;[Add to Runlevels](#5-add-to-runlevels)  

@@ -48,13 +48,16 @@ Your EC2 instance will need permissions to update a Route53 recordset. To avoid 
 ### Install the AWS Command Line Interface (AWS-CLI)
 Install the AWS CLI using [pip](http://docs.aws.amazon.com/cli/latest/userguide/awscli-install-linux.html) or use the [bundled installer](http://docs.aws.amazon.com/cli/latest/userguide/awscli-install-bundle.html).
 
->Note: I used an AMI from the marketplace and experienced several conflicts when installing `pip`. The bundled installer was much easier in this case.
-<br />
+>Note 1: I used an AMI from the marketplace and experienced several conflicts when installing `pip`. The bundled installer was much easier in this case.
 
-### Create SymLink
-Add a symlink for the AWS-CLI to the `/usr/bin` directory. The home directory is not always available at startup.
+>Note 2: If using `pip`, you may need to add a symlink for the AWS-CLI to the `/usr/bin` directory. In the example below, `awscli` was installed in the `/home/bitnami/.local/bin/aws` directory.
 ```bash
-ln -s /home/bitnami/.local/bin/aws /usr/bin/aws
+sudo ln -s /home/bitnami/.local/bin/aws /usr/bin/aws
+```
+
+>Note 3: If using the bundled installer, when running the executable (step 3), change the directory after the `-b` option to `/usr/bin/aws` to avoid creating a symlink manually.
+```bash
+sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/bin/aws
 ```
 <br />
 

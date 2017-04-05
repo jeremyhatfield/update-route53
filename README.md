@@ -58,8 +58,12 @@ ln -s /home/bitnami/.local/bin/aws /usr/bin/aws
 ```
 <br />
 
-## 2. Create the Script
-Create your script, `update-route53.sh`, in the `/etc/init.d` directory.
+## 2. Download the Script
+Download the script into your `/etc/init.d` directory.
+```bash
+cd /etc/init.d
+curl -LO "https://raw.githubusercontent.com/jeremyhatfield/update-route53/master/update-route53.sh"
+```
 <br /><br />
 
 ## 3. Update Script AWS Variables

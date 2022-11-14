@@ -33,7 +33,7 @@ COMMENT="Auto updating @ `date`"
 TYPE="A"
 
 # Get the external IP address
-IP=`wget -qO- http://instance-data/latest/meta-data/public-ipv4`
+IP=`dig -4 +short myip.opendns.com @resolver1.opendns.com`
 echo Got IP address: $IP
 
 function valid_ip()

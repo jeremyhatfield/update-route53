@@ -24,19 +24,19 @@ Your EC2 instance will need permissions to update a Route53 recordset. To avoid 
 
   * Within IAM's navigation pane, click on 'Roles.'  
   * Click the 'Create New Role' button.  
-![Create New Role Button](/../readme-images/images/1-create-new-role.png?raw=true "Create New Role")
+![Create New Role Button](/images/1-create-new-role.png?raw=true "Create New Role")
 <br />
 
   * Name your new role. I use `route53-editor`. Click Next Step.  
-![Set Role Name](/../readme-images/images/2-set-role-name.png?raw=true "Set Role Name")
+![Set Role Name](/images/2-set-role-name.png?raw=true "Set Role Name")
 <br />
 
   * Select the `Amazon EC2` service role, under the `AWS Service Roles` section.  
-![Select Role Type](/../readme-images/images/3-select-role-type.png?raw=true "Select Role Type")
+![Select Role Type](/images/3-select-role-type.png?raw=true "Select Role Type")
 <br />
 
   * Attach a policy. In the filter, type `route53`. Choose the `AmazonRoute53FullAccess` policy and click Next Step.  
-![Attach Policy](/../readme-images/images/4-attach-policy.png?raw=true "Attach Policy")
+![Attach Policy](/images/4-attach-policy.png?raw=true "Attach Policy")
 <br />
 
   * Review your settings on the next page, and if correct, click the Create Role button.  

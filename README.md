@@ -65,7 +65,7 @@ sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/bin/aws
 Download the script into your `/etc/init.d` directory.
 ```bash
 cd /etc/init.d
-curl -LO "https://raw.githubusercontent.com/jeremyhatfield/update-route53/master/update-route53.sh"
+curl -LO "https://raw.githubusercontent.com/yannicklescure/update-route53/master/update-route53.sh"
 ```
 <br /><br />
 
